@@ -68,22 +68,22 @@ function draw() {
   background('black');
   //jukebo
   if(mysong1.isPlaying()){
-    background('#609875');
+    background('#d3ac81');
   }
   if(mysong2.isPlaying()){
-     background('#023F7C');
+     background('#6598f1');
   }
   if(mysong3.isPlaying()){
-     background('#04062D');
+     background('#25313b');
   }
   if(mysong4.isPlaying()){
-    background('#b30000');
+    background('#f3010f');
   }
   if(mysong5.isPlaying()){
-    background('#e88168');
+    background('#609875');
   }
   if(mysong6.isPlaying()){
-    background('#984447');
+    background('#e76939');
   }
   calcWave();
   displayWave();
