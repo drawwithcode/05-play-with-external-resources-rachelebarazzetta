@@ -34,7 +34,7 @@ function preload(){
 
 function setup() {
   // put setup code here
-  createCanvas(windowWidth,550);
+  createCanvas(windowWidth,windowHeight-30);
   var buttonPlay = createButton('Change song');
   buttonPlay.mousePressed(songChange);
 
@@ -237,5 +237,5 @@ function displayWave() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, 550);
+  resizeCanvas(windowWidth, windowHeight-30);
 }
