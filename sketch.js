@@ -36,15 +36,15 @@ function setup() {
   // put setup code here
   createCanvas(windowWidth,windowHeight);
   var buttonPlay = createButton('Change song');
-  buttonPlay.position(windowWidth/2-45, windowHeight/2+200);
+  buttonPlay.position(windowWidth/2-45, windowHeight * 18/22);
   buttonPlay.mousePressed(songChange);
 
   var buttonStop = createButton('Pause');
-  buttonStop.position(windowWidth/2-26, windowHeight/2+225);
+  buttonStop.position(windowWidth/2-26, windowHeight * 19/22);
   buttonStop.mousePressed(songStop);
 
   var buttonResume = createButton('Resume');
-  buttonResume.position(windowWidth/2-30, windowHeight/2+250);
+  buttonResume.position(windowWidth/2-30, windowHeight * 20/22);
   buttonResume.mousePressed(songResume);
 
   mysong1.loop();
@@ -71,13 +71,13 @@ function draw() {
     background('#d3ac81');
   }
   if(mysong2.isPlaying()){
-     background('#6598f1');
+     background('#2e7baa');
   }
   if(mysong3.isPlaying()){
      background('#25313b');
   }
   if(mysong4.isPlaying()){
-    background('#f3010f');
+    background('#9b0211');
   }
   if(mysong5.isPlaying()){
     background('#609875');
