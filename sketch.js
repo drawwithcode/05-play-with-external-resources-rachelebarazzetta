@@ -5,11 +5,11 @@ var mySong3;
 var mySong4;
 var mySong5;
 var mySong6;
-var dis = 15;
+var dis = 7;
 var wid;
-var hei = 70;
-var ang = 0;
-var per = 400;
+var hei = 300;
+var ang = 10;
+var per = 2000;
 var dx;
 var yvalues;
 
@@ -20,33 +20,36 @@ function preload(){
   mysong1 = loadSound("./assets/classical.mp3");
   mysong2 = loadSound("./assets/dragonBallZ.mp3");
   mysong3 = loadSound("./assets/faded.mp3");
-  mysong4 = loadSound("./assets/highoctane.mp3");
+  mysong4 = loadSound("./assets/rock.mp3");
   mysong5 = loadSound("./assets/retrosoul.mp3");
   mysong6 = loadSound("./assets/thejazzpiano.mp3");
   //cover album
   imagecover1 = loadImage("./assets/coverCopertine/classicalcover.jpg");
   imagecover2 = loadImage("./assets/coverCopertine/dragonballcover.jpg");
   imagecover3 = loadImage("./assets/coverCopertine/fadedcover.jpg");
-  imagecover4 = loadImage("./assets/coverCopertine/highoctanecover.jpg");
+  imagecover4 = loadImage("./assets/coverCopertine/rockcover.jpg");
   imagecover5 = loadImage("./assets/coverCopertine/Jazzcover.jpg");
   imagecover6 = loadImage("./assets/coverCopertine/retrosuolcover.jpg");
 }
 
 function setup() {
   // put setup code here
-  createCanvas(windowWidth,windowHeight-30);
+  createCanvas(windowWidth,windowHeight);
   var buttonPlay = createButton('Change song');
+  buttonPlay.position(windowWidth/2-45, windowHeight/2+200);
   buttonPlay.mousePressed(songChange);
 
   var buttonStop = createButton('Pause');
+  buttonStop.position(windowWidth/2-26, windowHeight/2+225);
   buttonStop.mousePressed(songStop);
 
   var buttonResume = createButton('Resume');
+  buttonResume.position(windowWidth/2-30, windowHeight/2+250);
   buttonResume.mousePressed(songResume);
 
   mysong1.loop();
 
-  wid = width + 15;
+  wid = width;
   dx = (TWO_PI / per) * dis;
   yvalues = new Array(floor(wid/dis));
 
@@ -65,7 +68,7 @@ function draw() {
   background('black');
   //jukebo
   if(mysong1.isPlaying()){
-    background('#3A015C');
+    background('#609875');
   }
   if(mysong2.isPlaying()){
      background('#023F7C');
@@ -74,10 +77,10 @@ function draw() {
      background('#04062D');
   }
   if(mysong4.isPlaying()){
-    background('#83D4EA');
+    background('#b30000');
   }
   if(mysong5.isPlaying()){
-    background('#E98338');
+    background('#e88168');
   }
   if(mysong6.isPlaying()){
     background('#984447');
@@ -104,7 +107,7 @@ text('Retrosoul', width/2 - 43, height/2-11);
 //2
 text('Dragon Ball', width/2 + 43, height/2-94);
 //4
-text('Highoctane', width/2 + 43, height/2-52);
+text('Rock', width/2 + 43, height/2-52);
 //6
 text('Jazz', width/2 + 43, height/2-11);
 
@@ -135,7 +138,7 @@ if(mysong3.isPlaying()){
 }
 if(mysong4.isPlaying()){
   textStyle(BOLD);
-  text('Highoctane', width/2 + 43, height/2-52);
+  text('Rock', width/2 + 43, height/2-52);
   textStyle(NORMAL);
   text('Faded', width/2 - 43, height/2-52);
   image(imagecover4, width/2, height/2+40, 70, 70);
@@ -145,7 +148,7 @@ if(mysong5.isPlaying()){
   textStyle(BOLD);
   text('Retrosoul', width/2 - 43, height/2-11);
   textStyle(NORMAL);
-  text('Highoctane', width/2 + 43, height/2-52);
+  text('Rock', width/2 + 43, height/2-52);
   image(imagecover6, width/2, height/2+40, 70, 70);
   // background('#E98338');
 }
@@ -217,13 +220,13 @@ if(mysong6.isPaused()){
 
 function calcWave() {
   var vol = analyzer.getLevel();
-  ang += vol/2; // angle increment
+  ang += vol/7; // angle increment
   var x = ang;
 
   // sine function
   for (var a = 0; a < yvalues.length; a++) {
     yvalues[a] = sin(x)*hei;
-    x+=dx;
+    x+=windowWidth;
   }
 }
 
@@ -231,11 +234,12 @@ function displayWave() {
   noStroke();
   fill(255,100);
   for (var x = 0; x < yvalues.length; x++) {
-    ellipse(x*dis, height/2+yvalues[x], 15, 15);
+    ellipse(x*dis, height/2+yvalues[x], 10, 10);
 
   }
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight-30);
+  resizeCanvas(windowWidth, windowHeight);
+  button.resize();
 }
