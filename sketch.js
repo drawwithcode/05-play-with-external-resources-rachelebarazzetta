@@ -241,5 +241,4 @@ function displayWave() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-  button.resize();
 }
